@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Quiz Application</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f2f5;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #444;
+        }
+        button {
+            padding: 12px 25px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .container {
+            margin-top: 40px;
+            padding: 25px;
+            background: white;
+            width: 90%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        p {
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>JavaScript Quiz Application</h1>
+
+    <div class="container">
+        <p>Click the button below to start the quiz.</p>
+        <button onclick="runQuiz()">Start Quiz</button>
+    </div>
+
+    <script>
+        // -----------------------------------------
+        // QUIZ QUESTIONS ARRAY
+        // -----------------------------------------
+        const quizQuestions = [
+            { question: "What is the capital of India?", answer: "delhi" },
+            { question: "Which planet is known as the Red Planet?", answer: "mars" },
+            { question: "What is the largest mammal on Earth?", answer: "blue whale" },
+            { question: "Who wrote the national anthem of India?", answer: "rabindranath tagore" },
+            { question: "What is the square root of 64?", answer: "8" }
+        ];
+
+        // -----------------------------------------
+        // FUNCTION TO RUN QUIZ
+        // -----------------------------------------
+        function runQuiz() {
+
+            let score = 0; // initial score
+
+            for (let i = 0; i < quizQuestions.length; i++) {
+
+                let userInput = prompt(quizQuestions[i].question);
+
+                // If user cancels
+                if (userInput === null) {
+                    alert("Quiz cancelled.");
+                    return;
+                }
+
+                // Normalize answer
+                userInput = userInput.toLowerCase().trim();
+
+                // Check
+                if (userInput === quizQuestions[i].answer) {
+                    score++;
+                    alert("Correct! 🎉");
+                } else {
+                    alert("Wrong ❌\nCorrect answer: " + quizQuestions[i].answer);
+                }
+            }
+
+            // Final score
+            alert("Quiz Completed!\nYour Score: " + score + " / " + quizQuestions.length);
+        }
+    </script>
+
+</body>
+</html>
